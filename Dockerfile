@@ -38,6 +38,9 @@ RUN ln -snf /usr/share/zoneinfo/UTC /etc/localtime && echo UTC > /etc/timezone
 COPY --from=builder /usr/local/lib/python3.12/ /usr/local/lib/python3.12/
 COPY --from=builder /usr/local/bin/ /usr/local/bin/
 
+# Ensure python3 is accessible in PATH for cron
+RUN ln -sf /usr/local/bin/python3 /usr/bin/python3 || true
+
 # Copy FastAPI source code
 COPY app /app/app
 COPY student_private.pem /app/student_private.pem
