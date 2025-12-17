@@ -1,1 +1,6 @@
-* * * * * /usr/local/bin/python3 -u /app/app/totp_cron_logger.py >> /cron/last_code.txt 2>&1
+# Set PATH to ensure python3 is accessible
+PATH=/usr/local/bin:/usr/local/sbin:/usr/bin:/usr/sbin:/bin:/sbin
+SHELL=/bin/bash
+
+# Run TOTP cron logger every minute
+* * * * * cd /app && /usr/local/bin/python3 -u /app/app/totp_cron_logger.py >> /cron/last_code.txt 2>&1
